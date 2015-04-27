@@ -60,7 +60,7 @@ $(document).ready(function(){
 		//HOVER ACTION
 
 			$('.square').on('mouseenter', function (){
-				$(this).css('background-color', '#c9eac6');
+				$(this).css('background-color', '#f0f0f0');
 			});
 		// }
 
