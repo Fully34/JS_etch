@@ -22,13 +22,8 @@ $('.square').on('mouseenter', function (){
 	$('button').on('click', function (){
 		
 		$('.container').empty(); //--> EMPTY CURRENT GRID
-		
-		//DECLARE VARIABLES --> EXCEPT FOR GRID, GRID IS LATER
-		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-		var scale = prompt('How large would you like your squares (in pixels, up to 15)?')
 
-
-		//VERIFY IF USER INPUT IS AN INTEGER
+		//FUNCTION TO VERIFY IF USER INPUT IS AN INTEGER
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 		var isInt = function(num){
 			if(+num===parseInt(num)) {
@@ -38,17 +33,21 @@ $('.square').on('mouseenter', function (){
 			}
 		};
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+		
+		//DECLARE SCALE
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+		var scale = prompt('How large would you like your squares (in pixels, up to 15)?')
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 		//CHECK SCALE
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-		if (scale > 15) {
+		if (scale > 25) {
 			alert('That number needs to be smaller!  I\'m going to be so slow!');
 		}else if(isInt(scale)!==true){
 			alert('I need an integer!')
 		};
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-		
 		//DECLARE OTHER VARIABLES
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 		var grid = prompt('What size would you like your grid?');
@@ -57,7 +56,7 @@ $('.square').on('mouseenter', function (){
 		var container_height = grid *scale //--> Maintains grid integrity
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 		
-		//VERIFICATION THAT 'grid' IS AN INTEGER
+		//CHECK GRID
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 		if (grid > 100) {
 			alert('That number needs to be smaller!');
@@ -66,18 +65,24 @@ $('.square').on('mouseenter', function (){
 		}else if(grid>100){
 			alert('Stop wasting everybody\'s time!')			
 		}else if(isInt(grid)===true&&grid<=100){
-		//===============================================================//
-		//Iterate grid
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
+		//ITERATE GRID
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 			for (var i = 0; i< grid; i++){
 				for (var x=0; x < grid; x++){
 				container.append($('<div></div>').addClass('square').css({"width": scale, "height": scale}))
 				.css({"width": container_width, "height": container_height}); //--> need to use this to add apropriate amount of <div>'s to container <div>
 				}
-			$('.square').on('mouseenter', function (){
-				$(this).css('background-color', '#f0f0f0');
-			});
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+		//GRID ACTIONS
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+				$('.square').on('mouseenter', function (){
+					$(this).css('background-color', '#f0f0f0');
+				});
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 			}
-		};
-	});
-});	
+		}; //--> ends if
+	}); //--> ends function
+});	//--> ends javascript
